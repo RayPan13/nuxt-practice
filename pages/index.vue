@@ -13,7 +13,13 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC:100,300,400,500,700,900&display=swap');
+@mixin media($max) {
+    @media (max-width: $max + px) {
+        @content;
+    }
+}
 html {
     font-size: 10px;
     font-family: 'Noto Sans TC', sans-serif;
