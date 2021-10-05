@@ -25,6 +25,10 @@ body {
 main {
     display: block;
 }
+a {
+    color: inherit;
+    text-decoration: none;
+}
 .container {
     width: 100%;
     padding: 0 10%;

@@ -38,26 +38,29 @@
                 </div>
             </div>
         </div>
-        <!-- <header>
+        <header>
             <div class="container">
                 <div class="logo">
                     <fa :icon="['fas', 'ice-cream']" />
                     COLOMBO
                 </div>
-                <layout-nav />
+                <layout-nav class="nav" />
+                <div class="menu">
+                    <div class="line"></div>
+                </div>
             </div>
-        </header> -->
+        </header>
     </div>
 </template>
 
 <script>
-// import layoutNav from '@/components/LayoutNav.vue'
+import layoutNav from '@/components/LayoutNav.vue'
 
 export default {
     name: 'LayoutHeader',
-    // components: {
-    //     layoutNav,
-    // },
+    components: {
+        layoutNav,
+    },
 }
 </script>
 
@@ -93,8 +96,6 @@ export default {
             }
             a {
                 display: inline-block;
-                color: inherit;
-                text-decoration: none;
                 font-size: 1.4rem;
                 line-height: 1;
                 font-weight: 300;
@@ -150,6 +151,64 @@ export default {
             span {
                 font-size: 1.4rem;
                 font-weight: 300;
+            }
+        }
+    }
+}
+header {
+    padding: 16px 0;
+    .container {
+        display: flex;
+        justify-content: space-between;
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        svg {
+            font-size: 4rem;
+            margin-right: 4px;
+            color: #ff6b6b;
+        }
+        font-size: 2.5rem;
+        font-weight: 900;
+    }
+    .nav {
+        display: flex;
+        @include media(1024) {
+            display: none;
+        }
+    }
+    .menu {
+        display: none;
+        width: 24px;
+        position: relative;
+        cursor: pointer;
+        @include media(1024) {
+            display: block;
+        }
+        .line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 100%;
+            height: 4px;
+            background-color: #ff6b6b;
+            &::before,
+            &::after {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 100%;
+                background-color: #ff6b6b;
+                position: absolute;
+                left: 0;
+            }
+            &::before {
+                top: 8px;
+            }
+            &::after {
+                bottom: 8px;
             }
         }
     }
