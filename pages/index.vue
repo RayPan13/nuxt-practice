@@ -1,7 +1,14 @@
 <template>
-  <Tutorial/>
+    <div id="app">
+        <layoutHeader />
+    </div>
 </template>
 
 <script>
-export default {}
+import layoutHeader from '@/components/LayoutHeader.vue'
+export default {
+    components: {
+        layoutHeader,
+    },
+}
 </script>
