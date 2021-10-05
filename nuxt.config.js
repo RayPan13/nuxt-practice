@@ -11,6 +11,10 @@ export default {
         meta: [
             { charset: 'utf-8' },
             {
+                'http-equiv': 'X-UA-Compatible',
+                content: 'IE=edge',
+            },
+            {
                 name: 'viewport',
                 content: 'width=device-width, initial-scale=1',
             },
@@ -21,10 +25,10 @@ export default {
     },
 
     // Global CSS: https://go.nuxtjs.dev/config-css
-    css: [],
+    scss: [{ src: '@/assets/css/basic.scss', lang: 'scss' }],
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-    plugins: ['~/plugins/font-awesome'],
+    plugins: ['@/plugins/font-awesome'],
 
     // Auto import components: https://go.nuxtjs.dev/config-components
     components: true,
@@ -34,7 +38,6 @@ export default {
         // https://go.nuxtjs.dev/eslint
         '@nuxtjs/eslint-module',
     ],
-
     // Modules: https://go.nuxtjs.dev/config-modules
     modules: [
         // https://go.nuxtjs.dev/axios
