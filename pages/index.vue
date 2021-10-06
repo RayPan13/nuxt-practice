@@ -1,5 +1,6 @@
 <template>
     <div id="app">
+        <div class="cover" :class="{ active }"></div>
         <layoutHeader />
     </div>
 </template>
@@ -9,6 +10,11 @@ import layoutHeader from '@/components/LayoutHeader.vue'
 export default {
     components: {
         layoutHeader,
+    },
+    computed: {
+        active() {
+            return this.$store.state.isNavActive
+        },
     },
 }
 </script>
@@ -28,5 +34,16 @@ main {
 a {
     color: inherit;
     text-decoration: none;
+}
+.cover {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 8;
+    &.active {
+        display: block;
+    }
 }
 </style>

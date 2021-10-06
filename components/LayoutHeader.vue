@@ -41,11 +41,12 @@
         <header>
             <div class="container">
                 <div class="logo">
+                    <a href="javascript:;"></a>
                     <fa :icon="['fas', 'ice-cream']" />
                     COLOMBO
                 </div>
                 <layout-nav class="nav" />
-                <div class="menu">
+                <div class="menu" @click="openNav">
                     <div class="line"></div>
                 </div>
             </div>
@@ -60,6 +61,11 @@ export default {
     name: 'LayoutHeader',
     components: {
         layoutNav,
+    },
+    methods: {
+        openNav() {
+            this.$store.commit('toggleNav', true)
+        },
     },
 }
 </script>
@@ -160,18 +166,27 @@ header {
     .logo {
         display: flex;
         align-items: center;
+        position: relative;
+        font-size: 2.5rem;
+        font-weight: 900;
         svg {
             font-size: 4rem;
             margin-right: 4px;
             color: map-get($color, main);
         }
-        font-size: 2.5rem;
-        font-weight: 900;
+        a {
+            position: absolute;
+            display: block;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
     }
     .nav {
         display: flex;
         @include media(1024) {
-            display: none;
+            // display: none;
         }
     }
     .menu {
