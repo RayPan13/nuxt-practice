@@ -35,6 +35,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '@/assets/scss/basic';
 nav {
     display: flex;
     flex-basis: 70%;
@@ -77,7 +78,7 @@ nav {
             .number {
                 display: inline-block;
                 color: #fff;
-                background-color: #ff6b6b;
+                background-color: map-get($color, main);
                 width: 16px;
                 height: 16px;
                 border-radius: 50%;

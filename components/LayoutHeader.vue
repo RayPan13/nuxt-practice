@@ -65,11 +65,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@mixin media($max) {
-    @media (max-width: $max + px) {
-        @content;
-    }
-}
+@import '@/assets/scss/basic';
 .info {
     background-color: #f5f5f5;
     color: #333;
@@ -167,7 +163,7 @@ header {
         svg {
             font-size: 4rem;
             margin-right: 4px;
-            color: #ff6b6b;
+            color: map-get($color, main);
         }
         font-size: 2.5rem;
         font-weight: 900;
@@ -193,14 +189,14 @@ header {
             transform: translateY(-50%);
             width: 100%;
             height: 4px;
-            background-color: #ff6b6b;
+            background-color: map-get($color, main);
             &::before,
             &::after {
                 content: '';
                 display: block;
                 width: 100%;
                 height: 100%;
-                background-color: #ff6b6b;
+                background-color: map-get($color, main);
                 position: absolute;
                 left: 0;
             }
