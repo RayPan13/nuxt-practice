@@ -7,7 +7,11 @@
             <fa :icon="['fas', 'angle-up']" class="icon" />
             <ul>
                 <li>
-                    <button type="button" @click="toogleCategories"></button>
+                    <button
+                        :class="{ open: subMenu[0] }"
+                        type="button"
+                        @click="toogleSubMenu(0)"
+                    ></button>
                     <div class="main">
                         <span>Chocolates</span>
                         <fa :icon="['fas', 'angle-up']" class="icon" />
@@ -18,7 +22,11 @@
                     </ul>
                 </li>
                 <li>
-                    <button type="button" @click="toogleCategories"></button>
+                    <button
+                        :class="{ open: subMenu[1] }"
+                        type="button"
+                        @click="toogleSubMenu(1)"
+                    ></button>
                     <div class="main">
                         <span>Creams</span>
                         <fa :icon="['fas', 'angle-up']" class="icon" />
@@ -29,7 +37,11 @@
                     </ul>
                 </li>
                 <li>
-                    <button type="button" @click="toogleCategories"></button>
+                    <button
+                        :class="{ open: subMenu[2] }"
+                        type="button"
+                        @click="toogleSubMenu(2)"
+                    ></button>
                     <div class="main">
                         <span>Fruit</span>
                         <fa :icon="['fas', 'angle-up']" class="icon" />
@@ -63,9 +75,22 @@
 <script>
 export default {
     name: 'LayoutSecondHeader',
+    data() {
+        return {
+            subMenu: [false, false, false],
+        }
+    },
     methods: {
         toogleCategories(e) {
             e.target.classList.toggle('open')
+            this.closeSubMenu()
+        },
+        toogleSubMenu(idx) {
+            this.closeSubMenu()
+            this.subMenu[idx] = true
+        },
+        closeSubMenu() {
+            this.subMenu = [false, false, false]
         },
     },
 }
@@ -132,7 +157,7 @@ export default {
     li {
         list-style: none;
         color: #333;
-        padding: 12px;
+        padding: 12px 12px 0;
         border-bottom: 1px solid #ececec;
         cursor: pointer;
         position: relative;
@@ -153,8 +178,7 @@ export default {
                     transform: rotate(0);
                 }
                 & ~ ul {
-                    margin-top: 12px;
-                    height: auto;
+                    height: 88px;
                 }
             }
         }
@@ -163,6 +187,7 @@ export default {
             justify-content: space-between;
             align-items: center;
             color: #333;
+            padding-bottom: 12px;
             &:hover {
                 color: map-get($color, main);
             }
@@ -182,8 +207,12 @@ export default {
             transition: height 0.5s;
             li {
                 margin: 0 -12px;
+                padding-bottom: 12px;
                 &:last-child {
                     border-bottom: 0;
+                }
+                &:hover {
+                    color: map-get($color, main);
                 }
             }
         }
