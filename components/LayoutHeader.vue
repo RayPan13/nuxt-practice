@@ -50,17 +50,20 @@
                     <div class="line"></div>
                 </div>
             </div>
+            <layoutSecondHeader />
         </header>
     </div>
 </template>
 
 <script>
 import layoutNav from '@/components/LayoutNav.vue'
+import layoutSecondHeader from '@/components/LayoutSecondHeader.vue'
 
 export default {
     name: 'LayoutHeader',
     components: {
         layoutNav,
+        layoutSecondHeader,
     },
     methods: {
         openNav() {
@@ -162,6 +165,7 @@ header {
     .container {
         display: flex;
         justify-content: space-between;
+        padding-bottom: 24px;
     }
     .logo {
         display: flex;
@@ -186,7 +190,7 @@ header {
     .nav {
         display: flex;
         @include media(1024) {
-            // display: none;
+            display: none;
         }
     }
     .menu {
