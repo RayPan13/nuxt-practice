@@ -104,13 +104,14 @@ export default {
     }
 }
 .categories {
-    padding: 24px;
+    padding: 0 24px;
     border-radius: 4px;
     background-color: map-get($color, main);
     color: #fff;
     font-size: 1.6rem;
     display: flex;
     justify-content: center;
+    align-items: center;
     order: 1;
     position: relative;
     @include media(1024) {
@@ -118,6 +119,7 @@ export default {
     }
     @include media(640) {
         flex-basis: 100%;
+        padding: 16px 24px;
     }
     button {
         position: absolute;
@@ -233,8 +235,8 @@ export default {
         order: 4;
     }
     .icon {
-        font-size: 2.5rem;
-        padding: 14px;
+        font-size: 2rem;
+        padding: 10px;
         order: -1;
     }
     input:focus ~ .icon {
@@ -250,7 +252,7 @@ export default {
     button {
         color: #fff;
         background-color: map-get($color, main);
-        padding: 24px 16px;
+        padding: 16px;
         border: 0;
         font-size: 1.6rem;
         font-weight: 600;
@@ -268,8 +270,8 @@ export default {
     .icon {
         background-color: #e5e5e5;
         border-radius: 50%;
-        width: 52px;
-        height: 52px;
+        width: 48px;
+        height: 48px;
         display: flex;
         justify-content: center;
         align-items: center;
