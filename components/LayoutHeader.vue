@@ -79,6 +79,7 @@ export default {
     background-color: #f5f5f5;
     color: #333;
     padding: 12px 0;
+    margin-bottom: 16px;
     @include media(640) {
         display: none;
     }
@@ -161,11 +162,11 @@ export default {
     }
 }
 header {
-    padding: 16px 0;
+    margin-bottom: 8px;
     .container {
         display: flex;
         justify-content: space-between;
-        padding-bottom: 24px;
+        padding-bottom: 16px;
     }
     .logo {
         display: flex;

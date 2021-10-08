@@ -2,14 +2,17 @@
     <div id="app">
         <div class="cover" :class="{ active }"></div>
         <layoutHeader />
+        <layout-kv />
     </div>
 </template>
 
 <script>
 import layoutHeader from '@/components/LayoutHeader.vue'
+import layoutKv from '@/components/LayoutKv.vue'
 export default {
     components: {
         layoutHeader,
+        layoutKv,
     },
     computed: {
         active() {
