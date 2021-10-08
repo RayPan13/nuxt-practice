@@ -1,24 +1,23 @@
 <template>
-    <div class="carousel" @mouseenter="mEnter" @mouseleave="mLeave">
-        <transition-group tag="div" :class="view" :name="transitionName">
+    <div class="carousel">
+        <div class="view">
             <div v-for="obj of carousel" :key="obj.id" class="item">
                 <img :src="obj.src" />
                 <div class="txt">
                     <div class="button">{{ obj.text }}</div>
                 </div>
             </div>
-        </transition-group>
-        <button class="prev" @click="setShow(show - 1)">
+        </div>
+        <button class="prev">
             <fa :icon="['fas', 'angle-left']" />
         </button>
-        <button class="next" @click="setShow(show + 1)">
+        <button class="next">
             <fa :icon="['fas', 'angle-right']" />
         </button>
     </div>
 </template>
 
 <script>
-const interval = 3000
 export default {
     name: 'CarouselSlide',
     data() {
@@ -60,43 +59,7 @@ export default {
                     text: 'FRUIT',
                 },
             ],
-            transitionName: 'right-in',
-            show: 0,
-            in: false,
-            view: 'view',
         }
-    },
-    watch: {
-        show(nVal) {
-            const max = this.carousel.length - 1
-            if (nVal < 0) {
-                this.show = max
-            }
-            if (nVal > max) {
-                this.show = 0
-            }
-        },
-    },
-    mounted() {
-        setInterval(() => {
-            this.nextShow()
-        }, interval)
-    },
-    methods: {
-        nextShow() {
-            if (!this.in) {
-                this.show++
-            }
-        },
-        setShow(index) {
-            this.show = index
-        },
-        mEnter() {
-            this.in = true
-        },
-        mLeave() {
-            this.in = false
-        },
     },
 }
 </script>
@@ -187,23 +150,5 @@ export default {
             right: -10%;
         }
     }
-}
-.fade-enter {
-    opacity: 0;
-}
-.fade-enter-active {
-    transition: opacity 0.5s;
-}
-.fade-enter-to {
-    opacity: 1;
-}
-.fade-leave {
-    opacity: 1;
-}
-.fade-leave-active {
-    transition: opacity 0.5s;
-}
-.fade-leave-to {
-    opacity: 0;
 }
 </style>
