@@ -123,19 +123,19 @@ export default {
         overflow: hidden;
     }
     .item {
-        flex-basis: 23%;
-        margin: 0 1%;
+        flex-basis: 24%;
+        margin-right: 1%;
         flex-shrink: 0;
         border: 1px solid #d2d2d2;
         border-radius: 8px;
         overflow: hidden;
         @include media(1024) {
-            flex-basis: 31%;
-            margin: 0 1%;
+            flex-basis: 32%;
+            margin-right: 1.3%;
         }
         @include media(640) {
             flex-basis: 48%;
-            margin: 0 1%;
+            margin-right: 2%;
         }
         &:hover {
             border-color: map-get($color, main);
