@@ -1,13 +1,11 @@
 <template>
     <div class="carousel" @mouseenter="mEnter" @mouseleave="mLeave">
-        <transition-group tag="div" name="fade">
-            <div
-                v-for="(obj, index) of carousel"
-                v-show="index === show"
-                :key="obj.id"
-                class="item"
-            >
+        <transition-group tag="div" :class="view" :name="transitionName">
+            <div v-for="obj of carousel" :key="obj.id" class="item">
                 <img :src="obj.src" />
+                <div class="txt">
+                    <div class="button">{{ obj.text }}</div>
+                </div>
             </div>
         </transition-group>
         <button class="prev" @click="setShow(show - 1)">
@@ -16,31 +14,56 @@
         <button class="next" @click="setShow(show + 1)">
             <fa :icon="['fas', 'angle-right']" />
         </button>
-        <ul class="dots">
-            <li
-                v-for="(obj, index) of carousel"
-                :key="obj.id"
-                :class="{ active: index === show }"
-                @click="setShow(index)"
-            ></li>
-        </ul>
     </div>
 </template>
 
 <script>
 const interval = 3000
 export default {
-    name: 'Carousel',
+    name: 'CarouselSlide',
     data() {
         return {
             carousel: [
-                { id: 1, src: 'https://picsum.photos/379/180?random=1' },
-                { id: 2, src: 'https://picsum.photos/379/180?random=2' },
-                { id: 3, src: 'https://picsum.photos/379/180?random=3' },
-                { id: 4, src: 'https://picsum.photos/379/180?random=4' },
+                {
+                    id: 1,
+                    src: 'https://picsum.photos/200/200?random=6',
+                    text: 'SPECIALS',
+                },
+                {
+                    id: 2,
+                    src: 'https://picsum.photos/200/200?random=7',
+                    text: 'SHAKES',
+                },
+                {
+                    id: 3,
+                    src: 'https://picsum.photos/200/200?random=8',
+                    text: 'POPSICLES',
+                },
+                {
+                    id: 4,
+                    src: 'https://picsum.photos/200/200?random=9',
+                    text: 'CHOCOLATES',
+                },
+                {
+                    id: 5,
+                    src: 'https://picsum.photos/200/200?random=10',
+                    text: 'CREAMS',
+                },
+                {
+                    id: 6,
+                    src: 'https://picsum.photos/200/200?random=11',
+                    text: 'DULCE DE LECHE',
+                },
+                {
+                    id: 7,
+                    src: 'https://picsum.photos/200/200?random=12',
+                    text: 'FRUIT',
+                },
             ],
+            transitionName: 'right-in',
             show: 0,
             in: false,
+            view: 'view',
         }
     },
     watch: {
@@ -81,16 +104,9 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/scss/basic.scss';
 .carousel {
-    flex-basis: 70%;
-    margin-right: 24px;
+    flex-basis: 100%;
     position: relative;
     overflow: hidden;
-    @include media(1024) {
-        flex-basis: 100%;
-        padding-top: 47%;
-        margin-right: 0;
-        margin-bottom: 24px;
-    }
     &:hover {
         button {
             opacity: 1;
@@ -102,12 +118,45 @@ export default {
             }
         }
     }
+    .view {
+        display: flex;
+        overflow: hidden;
+    }
     .item {
-        position: absolute;
-        width: 100%;
-        top: 0;
+        flex-basis: 23%;
+        margin: 0 1%;
+        flex-shrink: 0;
+        border: 1px solid #d2d2d2;
+        border-radius: 8px;
+        overflow: hidden;
+        @include media(1024) {
+            flex-basis: 31%;
+            margin: 0 1%;
+        }
+        @include media(640) {
+            flex-basis: 48%;
+            margin: 0 1%;
+        }
+        &:hover {
+            border-color: map-get($color, main);
+        }
         img {
             width: 100%;
+        }
+        .txt {
+            padding: 12px;
+            .button {
+                background-color: map-get($color, main);
+                color: #fff;
+                font-size: 1.6rem;
+                font-weight: 600;
+                text-align: center;
+                border: 0;
+                border-radius: 8px;
+                padding: 12px;
+                width: 100%;
+                box-sizing: border-box;
+            }
         }
     }
     button {
@@ -136,28 +185,6 @@ export default {
         }
         &.next {
             right: -10%;
-        }
-    }
-    .dots {
-        position: absolute;
-        left: 0;
-        bottom: 12px;
-        width: 100%;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        li {
-            list-style: none;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            border: 1px solid map-get($color, main);
-            margin: 0 4px;
-            cursor: pointer;
-            &.active {
-                background-color: map-get($color, main);
-            }
         }
     }
 }

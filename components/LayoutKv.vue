@@ -1,7 +1,7 @@
 <template>
     <div class="kv">
         <div class="container">
-            <carousel />
+            <carousel-fade />
             <div class="cards">
                 <div class="card">
                     <img src="https://picsum.photos/379/180?random=4" alt="" />
@@ -15,11 +15,11 @@
 </template>
 
 <script>
-import carousel from '@/components/Carousel.vue'
+import carouselFade from '@/components/CarouselFade.vue'
 export default {
     name: 'LayoutKv',
     components: {
-        carousel,
+        carouselFade,
     },
 }
 </script>

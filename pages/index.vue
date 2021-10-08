@@ -3,16 +3,19 @@
         <div class="cover" :class="{ active }"></div>
         <layoutHeader />
         <layout-kv />
+        <layout-product />
     </div>
 </template>
 
 <script>
 import layoutHeader from '@/components/LayoutHeader.vue'
 import layoutKv from '@/components/LayoutKv.vue'
+import layoutProduct from '@/components/LayoutProduct.vue'
 export default {
     components: {
         layoutHeader,
         layoutKv,
+        layoutProduct,
     },
     computed: {
         active() {
