@@ -1,17 +1,19 @@
 <template>
     <div class="carousel">
         <div class="view">
-            <div v-for="obj of carousel" :key="obj.id" class="item">
-                <img :src="obj.src" />
-                <div class="txt">
-                    <div class="button">{{ obj.text }}</div>
-                </div>
-            </div>
+            <transition-group name="slide" tag="ul">
+                <li v-for="obj of slideAry" :key="obj.id" class="item">
+                    <img :src="carousel[obj.ref].src" />
+                    <div class="txt">
+                        <div class="button">{{ carousel[obj.ref].text }}</div>
+                    </div>
+                </li>
+            </transition-group>
         </div>
-        <button class="prev">
+        <button class="prev" @click="changeCarousel(-1)">
             <fa :icon="['fas', 'angle-left']" />
         </button>
-        <button class="next">
+        <button class="next" @click="changeCarousel(1)">
             <fa :icon="['fas', 'angle-right']" />
         </button>
     </div>
@@ -22,44 +24,57 @@ export default {
     name: 'CarouselSlide',
     data() {
         return {
+            slideAry: [],
             carousel: [
                 {
-                    id: 1,
                     src: 'https://picsum.photos/200/200?random=6',
                     text: 'SPECIALS',
                 },
                 {
-                    id: 2,
                     src: 'https://picsum.photos/200/200?random=7',
                     text: 'SHAKES',
                 },
                 {
-                    id: 3,
                     src: 'https://picsum.photos/200/200?random=8',
                     text: 'POPSICLES',
                 },
                 {
-                    id: 4,
                     src: 'https://picsum.photos/200/200?random=9',
                     text: 'CHOCOLATES',
                 },
                 {
-                    id: 5,
                     src: 'https://picsum.photos/200/200?random=10',
                     text: 'CREAMS',
                 },
                 {
-                    id: 6,
                     src: 'https://picsum.photos/200/200?random=11',
                     text: 'DULCE DE LECHE',
                 },
                 {
-                    id: 7,
                     src: 'https://picsum.photos/200/200?random=12',
                     text: 'FRUIT',
                 },
             ],
         }
+    },
+    mounted() {
+        for (let i = 1; i < this.carousel.length * 2; i++) {
+            const obj = {}
+            obj.id = i
+            obj.ref = i % this.carousel.length
+            this.slideAry.push(obj)
+        }
+    },
+    methods: {
+        changeCarousel(direction) {
+            if (direction > 0) {
+                const temp = this.slideAry.shift()
+                this.slideAry.push(temp)
+            } else {
+                const temp = this.slideAry.pop()
+                this.slideAry.unshift(temp)
+            }
+        },
     },
 }
 </script>
@@ -82,19 +97,30 @@ export default {
         }
     }
     .view {
-        display: flex;
         overflow: hidden;
     }
+    ul {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        transform: translateX(-100%);
+    }
+    li {
+        &:first-child,
+        &:last-child {
+            opacity: 0;
+        }
+    }
     .item {
-        flex-basis: 24%;
-        margin-right: 1%;
+        flex-basis: 23%;
+        margin-right: 2%;
         flex-shrink: 0;
         border: 1px solid #d2d2d2;
         border-radius: 8px;
         overflow: hidden;
         @include media(1024) {
-            flex-basis: 32%;
-            margin-right: 1.3%;
+            flex-basis: 31%;
+            margin-right: 2.3%;
         }
         @include media(640) {
             flex-basis: 48%;
@@ -119,6 +145,7 @@ export default {
                 padding: 12px;
                 width: 100%;
                 box-sizing: border-box;
+                cursor: pointer;
             }
         }
     }
@@ -149,6 +176,9 @@ export default {
         &.next {
             right: -10%;
         }
+    }
+    .slide-move {
+        transition: transform 0.8s;
     }
 }
 </style>

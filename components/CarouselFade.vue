@@ -28,7 +28,7 @@
 </template>
 
 <script>
-const interval = 3000
+const interval = 5000
 export default {
     name: 'Carousel',
     data() {
