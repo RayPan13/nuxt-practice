@@ -4,6 +4,7 @@
         <layoutHeader />
         <layout-kv />
         <layout-product />
+        <layout-featured />
     </div>
 </template>
 
@@ -11,11 +12,13 @@
 import layoutHeader from '@/components/LayoutHeader.vue'
 import layoutKv from '@/components/LayoutKv.vue'
 import layoutProduct from '@/components/LayoutProduct.vue'
+import layoutFeatured from '@/components/LayoutFeatured.vue'
 export default {
     components: {
         layoutHeader,
         layoutKv,
         layoutProduct,
+        layoutFeatured,
     },
     computed: {
         active() {
