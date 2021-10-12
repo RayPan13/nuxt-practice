@@ -14,4 +14,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.product {
+    width: 100%;
+    margin-bottom: 24px;
+}
+</style>
