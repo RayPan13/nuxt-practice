@@ -20,6 +20,7 @@
 </template>
 
 <script>
+const interval = 3000
 export default {
     name: 'CarouselSlide',
     data() {
@@ -64,6 +65,9 @@ export default {
             obj.ref = i % this.carousel.length
             this.slideAry.push(obj)
         }
+        setInterval(() => {
+            this.changeCarousel(1)
+        }, interval)
     },
     methods: {
         changeCarousel(direction) {
