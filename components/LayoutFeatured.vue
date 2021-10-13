@@ -18,6 +18,9 @@
                 <ul>
                     <li v-for="obj of product" :key="obj.id">
                         <div class="box">
+                            <div class="heart">
+                                <fa :icon="['far', 'heart']" />
+                            </div>
                             <div class="pic">
                                 <a href="javascript:;">{{ obj.title }}</a>
                                 <img :src="obj.src" alt="" />
@@ -191,8 +194,37 @@ export default {
             border: 1px solid #d9d9d9;
             border-radius: 4px;
             padding-bottom: 12px;
+            position: relative;
+            overflow: hidden;
             &:hover {
                 border-color: map-get($color, main);
+            }
+        }
+        .heart {
+            position: absolute;
+            top: 8px;
+            right: 4px;
+            border-radius: 50%;
+            background-color: #fff;
+            box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.7);
+            z-index: 3;
+            width: 30px;
+            height: 30px;
+            color: map-get($color, main);
+            font-size: 1.8rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            svg {
+                transition: 0.5s;
+            }
+            &:hover {
+                background-color: map-get($color, main);
+                color: #fff;
+                svg {
+                    transform: rotate(360deg);
+                }
             }
         }
         .txt {
@@ -215,7 +247,7 @@ export default {
         h3 {
             margin: 0 0 8px;
             font-size: 1.8rem;
-            font-weight: 500;
+            font-weight: 300;
         }
         p {
             margin: 0 0 8px;
@@ -223,7 +255,6 @@ export default {
             &::before {
                 content: '$';
                 display: inline-block;
-                padding-right: 4px;
             }
         }
         button {
@@ -240,6 +271,7 @@ export default {
             span {
                 font-size: 1.4rem;
                 font-weight: 600;
+                padding-left: 4px;
             }
         }
     }
