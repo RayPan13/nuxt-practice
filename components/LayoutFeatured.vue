@@ -213,6 +213,7 @@ export default {
         padding: 0;
         display: flex;
         flex-wrap: wrap;
+        align-items: center;
         font-size: 0;
     }
     li {
@@ -255,7 +256,7 @@ export default {
             right: 4px;
             border-radius: 50%;
             background-color: #fff;
-            box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.7);
+            box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);
             z-index: 3;
             width: 30px;
             height: 30px;
