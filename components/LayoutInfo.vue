@@ -12,6 +12,9 @@
                     </div>
                 </div>
             </div>
+            <div class="banner">
+                <img src="https://picsum.photos/1208/222?random=1001" alt="" />
+            </div>
         </div>
     </div>
 </template>
@@ -54,6 +57,7 @@ export default {
 .note {
     width: 100%;
     display: flex;
+    margin-bottom: 24px;
     @include media(640) {
         flex-wrap: wrap;
     }
@@ -94,6 +98,30 @@ export default {
             margin: 0;
             user-select: none;
         }
+    }
+}
+.banner {
+    padding: 0 12px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    @include media(640) {
+        display: none;
+    }
+    &::after {
+        content: '';
+        display: block;
+        width: calc(100% - 24px);
+        height: 4px;
+        background-color: map-get($color, main);
+        position: absolute;
+        left: 12px;
+        bottom: 0;
+        border-radius: 0 0 4px 4px;
+    }
+    img {
+        border-radius: 4px 4px 0 0;
+        width: 100%;
     }
 }
 </style>
