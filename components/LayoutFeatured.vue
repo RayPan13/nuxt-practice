@@ -165,7 +165,6 @@ export default {
 @import '@/assets/scss/basic';
 .featured {
     width: 100%;
-    margin-bottom: 24px;
     h1 {
         text-align: center;
         margin: 12px 0;

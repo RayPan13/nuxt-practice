@@ -81,14 +81,13 @@ export default {
 @import '@/assets/scss/basic.scss';
 .carousel {
     flex-basis: 70%;
-    margin-right: 24px;
+    margin: 0 24px 0 12px;
     position: relative;
     overflow: hidden;
     @include media(1024) {
         flex-basis: 100%;
         padding-top: 47%;
-        margin-right: 0;
-        margin-bottom: 24px;
+        margin: 0 12px 24px;
     }
     &:hover {
         button {

@@ -2,10 +2,14 @@
     <div class="carousel">
         <div class="view">
             <transition-group name="slide" tag="ul">
-                <li v-for="obj of slideAry" :key="obj.id" class="item">
-                    <img :src="carousel[obj.ref].src" />
-                    <div class="txt">
-                        <div class="button">{{ carousel[obj.ref].text }}</div>
+                <li v-for="obj of slideAry" :key="obj.id">
+                    <div class="box">
+                        <img :src="carousel[obj.ref].src" />
+                        <div class="txt">
+                            <div class="button">
+                                {{ carousel[obj.ref].text }}
+                            </div>
+                        </div>
                     </div>
                 </li>
             </transition-group>
@@ -100,10 +104,10 @@ export default {
         button {
             opacity: 1;
             &.prev {
-                left: 10px;
+                left: 24px;
             }
             &.next {
-                right: 10px;
+                right: 24px;
             }
         }
     }
@@ -114,64 +118,66 @@ export default {
         padding: 0;
         margin: 0;
         display: flex;
+        align-items: center;
         transform: translateX(-100%);
         @include media(400) {
             transform: translateX(-300%);
         }
     }
     li {
+        flex-basis: 25%;
+        padding: 0 12px;
+        flex-shrink: 0;
+        box-sizing: border-box;
+        overflow: hidden;
+        @include media(1024) {
+            flex-basis: 33.33%;
+            padding: 0 12px;
+        }
+        @include media(640) {
+            flex-basis: 50%;
+            padding: 0 12px;
+        }
+        @include media(400) {
+            flex-basis: 100%;
+            padding: 0 12px;
+        }
+        &:hover {
+            border-color: map-get($color, main);
+        }
         &:first-child,
         &:last-child {
             opacity: 0;
         }
     }
-    .item {
-        flex-basis: 23%;
-        margin-right: 2%;
-        flex-shrink: 0;
-        border: 1px solid #d2d2d2;
-        border-radius: 8px;
-        overflow: hidden;
-        @include media(1024) {
-            flex-basis: 31%;
-            margin-right: 2.3%;
-        }
-        @include media(640) {
-            flex-basis: 48%;
-            margin-right: 2%;
-        }
-        @include media(400) {
-            flex-basis: 98%;
-            margin-right: 2%;
-        }
-        &:hover {
-            border-color: map-get($color, main);
-        }
-        img {
+    .box {
+        border: 1px solid #e1e1e1;
+        border-radius: 4px;
+    }
+    img {
+        width: 100%;
+    }
+    .txt {
+        padding: 12px;
+        .button {
+            background-color: map-get($color, main);
+            color: #fff;
+            font-size: 1.6rem;
+            font-weight: 600;
+            text-align: center;
+            border: 0;
+            border-radius: 8px;
+            padding: 12px 8px;
             width: 100%;
-        }
-        .txt {
-            padding: 12px;
-            .button {
-                background-color: map-get($color, main);
-                color: #fff;
-                font-size: 1.6rem;
-                font-weight: 600;
-                text-align: center;
-                border: 0;
-                border-radius: 8px;
-                padding: 12px;
-                width: 100%;
-                box-sizing: border-box;
-                cursor: pointer;
-            }
+            box-sizing: border-box;
+            cursor: pointer;
         }
     }
     button {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        font-size: 2rem;
+        font-size: 1.6rem;
         color: #fff;
         padding: 0;
         background: map-get($color, main);

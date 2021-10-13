@@ -43,8 +43,11 @@ export default {
         flex-basis: 30%;
         display: flex;
         flex-wrap: wrap;
+        box-sizing: border-box;
+        margin: 0 12px 0 0;
         @include media(1024) {
             flex-basis: 100%;
+            margin: 0 12px;
             flex-wrap: nowrap;
         }
         @include media(640) {
