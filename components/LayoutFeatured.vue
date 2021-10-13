@@ -15,8 +15,12 @@
                 </ul>
             </div>
             <div class="product">
-                <ul>
-                    <li v-for="obj of product" :key="obj.id">
+                <transition-group tag="ul" name="flip">
+                    <li
+                        v-for="obj of product"
+                        :key="obj.id"
+                        :class="{ show: obj.show }"
+                    >
                         <div class="box">
                             <div class="heart">
                                 <fa :icon="['far', 'heart']" />
@@ -35,7 +39,7 @@
                             </button>
                         </div>
                     </li>
-                </ul>
+                </transition-group>
             </div>
         </div>
     </div>
@@ -48,76 +52,111 @@ export default {
         return {
             tabActive: [1, 0, 0, 0, 0],
             tabs: [
-                { tab: 'Popular' },
-                { tab: 'Creams' },
-                { tab: 'Chocolates' },
-                { tab: 'Fruit' },
-                { tab: 'Dulce de leche' },
+                { id: 1, tab: 'Popular' },
+                { id: 2, tab: 'Creams' },
+                { id: 3, tab: 'Chocolates' },
+                { id: 4, tab: 'Fruit' },
+                { id: 5, tab: 'Dulce de leche' },
             ],
             product: [
                 {
+                    id: 1,
                     src: 'https://picsum.photos/260/260?random=101',
                     title: 'Chocolate',
                     price: '10.00',
                     type: 'Chocolates',
+                    show: false,
                 },
                 {
+                    id: 2,
                     src: 'https://picsum.photos/260/260?random=102',
                     title: 'American Cream',
                     price: '10.00',
                     type: 'Creams',
+                    show: false,
                 },
                 {
+                    id: 3,
                     src: 'https://picsum.photos/260/260?random=103',
                     title: 'Dulce de Leche',
                     price: '10.00',
                     type: 'Dulce de leche',
+                    show: false,
                 },
                 {
+                    id: 4,
                     src: 'https://picsum.photos/260/260?random=104',
                     title: 'Swiss Cream',
                     price: '10.00',
                     type: 'Creams',
+                    show: false,
                 },
                 {
+                    id: 5,
                     src: 'https://picsum.photos/260/260?random=105',
                     title: 'Raspberry',
                     price: '10.00',
                     type: 'Fruit',
+                    show: false,
                 },
                 {
+                    id: 6,
                     src: 'https://picsum.photos/260/260?random=106',
                     title: 'Dulce de Leche Brownie',
                     price: '10.00',
                     type: 'Dulce de leche',
+                    show: false,
                 },
                 {
+                    id: 7,
                     src: 'https://picsum.photos/260/260?random=107',
                     title: 'Chocolate with Raisins',
                     price: '10.00',
                     type: 'Chocolates',
+                    show: false,
                 },
                 {
+                    id: 8,
                     src: 'https://picsum.photos/260/260?random=108',
                     title: 'Lemon',
                     price: '10.00',
                     type: 'Fruit',
+                    show: false,
                 },
             ],
+            show: 'Popular',
         }
     },
     mounted() {
-        for (let i = 0; i < this.tabs.length; i++) {
-            this.tabs[i].id = i + 1
-        }
-        for (let i = 0; i < this.product.length; i++) {
-            this.product[i].id = i + 1
-        }
+        this.clickTab(0)
     },
     methods: {
         clickTab(idx) {
             this.tabActive = [0, 0, 0, 0, 0]
             this.tabActive[idx] = 1
+            this.show = this.tabs[idx].tab
+            if (this.show === 'Popular') {
+                this.sortProduct()
+            } else {
+                this.formatProduct(this.show)
+            }
+        },
+        formatProduct(show) {
+            this.product.forEach((obj, index) => {
+                if (obj.type === show) {
+                    const temp = this.product.splice(index, 1)[0]
+                    temp.show = true
+                    this.product.unshift(temp)
+                } else {
+                    obj.show = false
+                }
+            })
+        },
+        sortProduct() {
+            this.product.forEach((obj) => {
+                obj.show = true
+            })
+            this.product.sort((a, b) => a.id - b.id)
         },
     },
 }
@@ -167,6 +206,7 @@ export default {
 }
 .product {
     width: 100%;
+    overflow: hidden;
     ul {
         width: 100%;
         margin: 0;
@@ -181,6 +221,15 @@ export default {
         padding: 0 12px;
         margin-bottom: 24px;
         box-sizing: border-box;
+        background-color: #fff;
+        height: 0;
+        transition: transform 0.5s;
+        transform: scale(0);
+        overflow: hidden;
+        &.show {
+            transform: scale(1);
+            height: auto;
+        }
         @include media(1024) {
             flex-basis: 33.33%;
         }
@@ -246,12 +295,12 @@ export default {
         }
         h3 {
             margin: 0 0 8px;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 300;
         }
         p {
             margin: 0 0 8px;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             &::before {
                 content: '$';
                 display: inline-block;
@@ -274,6 +323,9 @@ export default {
                 padding-left: 4px;
             }
         }
+    }
+    .flip-move {
+        transition: transform 0.5s;
     }
 }
 </style>
