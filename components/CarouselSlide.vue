@@ -56,6 +56,7 @@ export default {
                     text: 'FRUIT',
                 },
             ],
+            isDelay: false,
         }
     },
     mounted() {
@@ -71,12 +72,18 @@ export default {
     },
     methods: {
         changeCarousel(direction) {
-            if (direction > 0) {
-                const temp = this.slideAry.shift()
-                this.slideAry.push(temp)
-            } else {
-                const temp = this.slideAry.pop()
-                this.slideAry.unshift(temp)
+            if (!this.isDelay) {
+                if (direction > 0) {
+                    const temp = this.slideAry.shift()
+                    this.slideAry.push(temp)
+                } else {
+                    const temp = this.slideAry.pop()
+                    this.slideAry.unshift(temp)
+                }
+                this.isDelay = true
+                setTimeout(() => {
+                    this.isDelay = false
+                }, 500)
             }
         },
     },
@@ -108,6 +115,9 @@ export default {
         margin: 0;
         display: flex;
         transform: translateX(-100%);
+        @include media(400) {
+            transform: translateX(-300%);
+        }
     }
     li {
         &:first-child,
@@ -128,6 +138,10 @@ export default {
         }
         @include media(640) {
             flex-basis: 48%;
+            margin-right: 2%;
+        }
+        @include media(400) {
+            flex-basis: 98%;
             margin-right: 2%;
         }
         &:hover {
