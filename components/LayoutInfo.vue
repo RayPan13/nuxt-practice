@@ -52,14 +52,16 @@ export default {
     margin-bottom: 24px;
 }
 .note {
+    width: 100%;
     display: flex;
-    flex-wrap: wrap;
+    @include media(640) {
+        flex-wrap: wrap;
+    }
     .item {
-        flex-basis: 33%;
+        flex-basis: 100%;
         padding: 0 12px;
         box-sizing: border-box;
         @include media(640) {
-            flex-basis: 100%;
             padding: 0 0 24px;
             &:last-child {
                 padding-bottom: 0;

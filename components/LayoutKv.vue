@@ -51,6 +51,7 @@ export default {
             flex-wrap: wrap;
         }
         .card {
+            flex-basis: 100%;
             margin-bottom: 24px;
             @include media(1024) {
                 margin-bottom: 0;
