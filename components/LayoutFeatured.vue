@@ -229,16 +229,17 @@ export default {
             height: auto;
             margin-bottom: 24px;
             padding: 0 12px;
+            @include media(1024) {
+                flex-basis: 33.33%;
+            }
+            @include media(640) {
+                flex-basis: 50%;
+            }
+            @include media(400) {
+                flex-basis: 100%;
+            }
         }
-        @include media(1024) {
-            flex-basis: 33.33%;
-        }
-        @include media(640) {
-            flex-basis: 50%;
-        }
-        @include media(400) {
-            flex-basis: 100%;
-        }
+
         .box {
             border: 1px solid #d9d9d9;
             border-radius: 4px;
