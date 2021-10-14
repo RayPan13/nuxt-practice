@@ -217,18 +217,18 @@ export default {
     }
     li {
         list-style: none;
-        flex-basis: 25%;
-        padding: 0 12px;
-        margin-bottom: 24px;
+        flex-basis: 0;
+        padding: 0;
+        margin-bottom: 0;
         box-sizing: border-box;
         background-color: #fff;
         height: 0;
-        transition: transform 0.5s;
-        transform: scale(0);
         overflow: hidden;
         &.show {
-            transform: scale(1);
+            flex-basis: 25%;
             height: auto;
+            margin-bottom: 24px;
+            padding: 0 12px;
         }
         @include media(1024) {
             flex-basis: 33.33%;
