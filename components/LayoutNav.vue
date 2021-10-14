@@ -62,7 +62,7 @@ nav {
     align-items: center;
     color: #333;
     @include media(1024) {
-        position: absolute;
+        position: fixed;
         top: 0;
         left: -100%;
         width: 320px;

@@ -163,6 +163,9 @@ export default {
 }
 header {
     margin-bottom: 8px;
+    @include media(640) {
+        margin-top: 16px;
+    }
     .container {
         display: flex;
         justify-content: space-between;
