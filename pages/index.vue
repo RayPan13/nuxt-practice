@@ -7,6 +7,7 @@
         <layout-featured />
         <layout-info />
         <layout-footer />
+        <back-top-btn />
     </div>
 </template>
 
@@ -17,6 +18,7 @@ import layoutProduct from '@/components/LayoutProduct.vue'
 import layoutFeatured from '@/components/LayoutFeatured.vue'
 import layoutInfo from '@/components/LayoutInfo.vue'
 import layoutFooter from '@/components/LayoutFooter.vue'
+import backTopBtn from '@/components/BackTopBtn.vue'
 export default {
     components: {
         layoutHeader,
@@ -25,6 +27,7 @@ export default {
         layoutFeatured,
         layoutInfo,
         layoutFooter,
+        backTopBtn,
     },
     computed: {
         active() {

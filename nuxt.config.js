@@ -49,6 +49,7 @@ export default {
         // https://go.nuxtjs.dev/axios
         '@nuxtjs/axios',
         'nuxt-fontawesome',
+        'vue-scrollto/nuxt',
     ],
     fontawesome: {
         component: 'fa',
