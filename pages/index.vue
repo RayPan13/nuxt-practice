@@ -7,7 +7,7 @@
         <layout-featured />
         <layout-info />
         <layout-footer />
-        <back-top-btn />
+        <back-top-btn :scroll-top="scrollTop" />
     </div>
 </template>
 
@@ -29,9 +29,22 @@ export default {
         layoutFooter,
         backTopBtn,
     },
+    data() {
+        return {
+            scrollTop: 0,
+        }
+    },
     computed: {
         active() {
             return this.$store.state.isNavActive
+        },
+    },
+    mounted() {
+        window.addEventListener('scroll', this.scrollhandler, true)
+    },
+    methods: {
+        scrollhandler() {
+            this.scrollTop = document.documentElement.scrollTop
         },
     },
 }
