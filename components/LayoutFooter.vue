@@ -40,9 +40,7 @@
             </div>
             <div class="item contact">
                 <h4>Be the first to know it</h4>
-                <p>
-                    Subscribe to receive updates on our store and special offers
-                </p>
+                <p>Subscribe to receive updates on our store and special offers</p>
                 <div class="input-box">
                     <input type="text" placeholder="Enter your email" />
                     <button type="button">
@@ -93,7 +91,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/basic.scss';
+@import '@/assets/scss/variable';
 footer {
     background-color: #f5f5f5;
     padding: 72px 0;

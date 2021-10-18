@@ -9,6 +9,11 @@
 <script>
 export default {
     name: 'Contact',
+    computed: {
+        active() {
+            return this.$store.state.isNavActive
+        },
+    },
 }
 </script>
 

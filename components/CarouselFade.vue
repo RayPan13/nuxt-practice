@@ -1,12 +1,7 @@
 <template>
     <div class="carousel" @mouseenter="mEnter" @mouseleave="mLeave">
         <transition-group tag="div" name="fade">
-            <div
-                v-for="(obj, index) of carousel"
-                v-show="index === show"
-                :key="obj.id"
-                class="item"
-            >
+            <div v-for="(obj, index) of carousel" v-show="index === show" :key="obj.id" class="item">
                 <img :src="obj.src" />
             </div>
         </transition-group>
@@ -78,7 +73,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/basic.scss';
+@import '@/assets/scss/variable';
 .carousel {
     flex-basis: 70%;
     margin: 0 24px 0 12px;

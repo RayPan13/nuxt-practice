@@ -51,41 +51,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-html {
-    font-size: 10px;
-    font-family: 'Roboto', sans-serif;
-}
-body {
-    margin: 0;
-    padding: 0;
-}
-main {
-    display: block;
-}
-a {
-    color: inherit;
-    text-decoration: none;
-}
-::-webkit-scrollbar {
-    width: 10px;
-}
-::-webkit-scrollbar-track {
-    background: #f5f5f5;
-}
-::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-    background: #ff6b6b;
-}
-.cover {
-    display: none;
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 8;
-    &.active {
-        display: block;
-    }
-}
-</style>
+<style lang="scss"></style>

@@ -25,7 +25,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/basic.scss';
+@import '@/assets/scss/variable.scss';
 .kv {
     width: 100%;
     margin-bottom: 24px;

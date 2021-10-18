@@ -7,11 +7,7 @@
             <fa :icon="['fas', 'angle-up']" class="icon" />
             <ul>
                 <li>
-                    <button
-                        :class="{ open: subMenu[0] }"
-                        type="button"
-                        @click="toogleSubMenu(0)"
-                    ></button>
+                    <button :class="{ open: subMenu[0] }" type="button" @click="toogleSubMenu(0)"></button>
                     <div class="main">
                         <span>Chocolates</span>
                         <fa :icon="['fas', 'angle-up']" class="icon" />
@@ -22,11 +18,7 @@
                     </ul>
                 </li>
                 <li>
-                    <button
-                        :class="{ open: subMenu[1] }"
-                        type="button"
-                        @click="toogleSubMenu(1)"
-                    ></button>
+                    <button :class="{ open: subMenu[1] }" type="button" @click="toogleSubMenu(1)"></button>
                     <div class="main">
                         <span>Creams</span>
                         <fa :icon="['fas', 'angle-up']" class="icon" />
@@ -37,11 +29,7 @@
                     </ul>
                 </li>
                 <li>
-                    <button
-                        :class="{ open: subMenu[2] }"
-                        type="button"
-                        @click="toogleSubMenu(2)"
-                    ></button>
+                    <button :class="{ open: subMenu[2] }" type="button" @click="toogleSubMenu(2)"></button>
                     <div class="main">
                         <span>Fruit</span>
                         <fa :icon="['fas', 'angle-up']" class="icon" />
@@ -97,7 +85,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/basic';
+@import '@/assets/scss/variable';
 .second {
     @include media(1024) {
         flex-wrap: wrap;

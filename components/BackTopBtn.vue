@@ -1,9 +1,5 @@
 <template>
-    <div
-        v-scroll-to="scrollToOption"
-        class="back-top"
-        :class="{ active: scrollTop > posittion }"
-    >
+    <div v-scroll-to="scrollToOption" class="back-top" :class="{ active: scrollTop > posittion }">
         <fa :icon="['fas', 'chevron-up']" />
     </div>
 </template>
@@ -28,7 +24,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import '@/assets/scss/basic';
+@import '@/assets/scss/variable';
 .back-top {
     width: 40px;
     height: 40px;

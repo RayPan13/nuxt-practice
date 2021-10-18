@@ -95,7 +95,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/basic.scss';
+@import '@/assets/scss/variable';
 .carousel {
     flex-basis: 100%;
     position: relative;

@@ -1,0 +1,23 @@
+@charset 'UTF-8';
+@mixin media($max) {
+    @media (max-width: $max + px) {
+        @content;
+    }
+}
+$color: (
+    main: #ff6b6b,
+);
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
+    max-width: 1280px;
+    box-sizing: border-box;
+    @include media(1024) {
+        padding: 0 8%;
+    }
+    @include media(640) {
+        padding: 0 5%;
+    }
+}

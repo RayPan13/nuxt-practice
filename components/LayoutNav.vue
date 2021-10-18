@@ -53,7 +53,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/assets/scss/basic';
+@import '@/assets/scss/variable';
 nav {
     position: relative;
     display: flex;

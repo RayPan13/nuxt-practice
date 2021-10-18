@@ -16,11 +16,7 @@
             </div>
             <div class="product">
                 <transition-group tag="ul" name="flip">
-                    <li
-                        v-for="obj of product"
-                        :key="obj.id"
-                        :class="{ show: obj.show }"
-                    >
+                    <li v-for="obj of product" :key="obj.id" :class="{ show: obj.show }">
                         <div class="box">
                             <div class="heart">
                                 <fa :icon="['far', 'heart']" />
@@ -162,7 +158,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import '@/assets/scss/basic';
+@import '@/assets/scss/variable';
 .featured {
     width: 100%;
     h1 {
