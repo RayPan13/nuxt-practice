@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <div class="cover" :class="{ active }"></div>
+        <div class="cover" :class="{ active }" @click="closeNav"></div>
         <layoutHeader />
         <layout-kv />
         <layout-product />
@@ -47,8 +47,9 @@ export default {
         scrollhandler() {
             this.scrollTop = document.documentElement.scrollTop
         },
+        closeNav() {
+            this.$store.commit('toggleNav', false)
+        },
     },
 }
 </script>
-
-<style lang="scss"></style>

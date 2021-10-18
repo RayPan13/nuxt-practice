@@ -6,7 +6,7 @@
             COLOMBO
         </div>
         <ul>
-            <li>
+            <li @click="closeNav">
                 <nuxt-link to="/">HOME</nuxt-link>
             </li>
             <li>
@@ -15,8 +15,8 @@
             <li>
                 <a href="javascript:;">PAGES</a>
             </li>
-            <li>
-                <nuxt-link to="/contact">CONTACT</nuxt-link>
+            <li @click="closeNav">
+                <nuxt-link to="/contact" @click="closeNav">CONTACT</nuxt-link>
             </li>
             <li class="login">
                 <a href="javascript:;">LOG IN</a>
