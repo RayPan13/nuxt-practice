@@ -20,6 +20,7 @@ import layoutInfo from '@/components/LayoutInfo.vue'
 import layoutFooter from '@/components/LayoutFooter.vue'
 import backTopBtn from '@/components/BackTopBtn.vue'
 export default {
+    name: 'Index',
     components: {
         layoutHeader,
         layoutKv,

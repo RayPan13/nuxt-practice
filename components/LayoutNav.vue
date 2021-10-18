@@ -7,7 +7,7 @@
         </div>
         <ul>
             <li>
-                <a href="javascript:;">HOME</a>
+                <nuxt-link to="/">HOME</nuxt-link>
             </li>
             <li>
                 <a href="javascript:;">SHOP</a>
@@ -16,7 +16,7 @@
                 <a href="javascript:;">PAGES</a>
             </li>
             <li>
-                <a href="javascript:;">CONTACT</a>
+                <nuxt-link to="/contact">CONTACT</nuxt-link>
             </li>
             <li class="login">
                 <a href="javascript:;">LOG IN</a>

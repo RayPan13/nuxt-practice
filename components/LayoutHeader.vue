@@ -193,9 +193,6 @@ header {
     }
     .nav {
         display: flex;
-        @include media(1024) {
-            display: none;
-        }
     }
     .menu {
         display: none;
