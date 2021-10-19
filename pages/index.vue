@@ -2,12 +2,14 @@
     <div id="app">
         <div class="cover" :class="{ active }" @click="closeNav"></div>
         <layoutHeader />
-        <layout-kv />
-        <layout-product />
-        <layout-featured />
-        <layout-info />
-        <layout-footer />
+        <main>
+            <layout-kv />
+            <layout-product />
+            <layout-featured />
+            <layout-info />
+        </main>
         <back-top-btn :scroll-top="scrollTop" />
+        <layout-footer />
     </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-    <div id="header">
+    <header>
         <div class="info">
             <div class="container">
                 <div class="left">
@@ -38,7 +38,7 @@
                 </div>
             </div>
         </div>
-        <header>
+        <div class="header">
             <div class="container">
                 <div class="logo">
                     <a href="javascript:;"></a>
@@ -51,8 +51,8 @@
                 </div>
             </div>
             <layoutSecondHeader />
-        </header>
-    </div>
+        </div>
+    </header>
 </template>
 
 <script>
@@ -161,7 +161,7 @@ export default {
         }
     }
 }
-header {
+.header {
     margin-bottom: 8px;
     @include media(640) {
         margin-top: 16px;
