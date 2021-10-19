@@ -60,6 +60,9 @@ export default {
     flex-basis: 100%;
     margin: 0 24px 24px 0;
     box-sizing: border-box;
+    &:hover {
+        box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);
+    }
     &:last-child {
         margin-right: 0;
     }
