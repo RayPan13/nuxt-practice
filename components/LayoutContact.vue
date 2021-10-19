@@ -49,7 +49,6 @@ export default {
 @import '@/assets/scss/variable';
 .info {
     display: flex;
-    margin-bottom: 24px;
     @include media(960) {
         flex-wrap: wrap;
     }
@@ -59,21 +58,20 @@ export default {
     border-radius: 5px;
     padding: 12px;
     flex-basis: 100%;
-    margin-right: 12px;
+    margin: 0 24px 24px 0;
     box-sizing: border-box;
     &:last-child {
         margin-right: 0;
     }
     @include media(960) {
-        flex-basis: calc(50% - 8px);
-        margin: 0 12px 12px 0;
+        flex-basis: calc(50% - 12px);
         &:nth-child(even) {
             margin-right: 0;
         }
     }
     @include media(480) {
         flex-basis: 100%;
-        margin: 0 0 12px;
+        margin: 0 0 24px;
     }
     .icon {
         text-align: center;

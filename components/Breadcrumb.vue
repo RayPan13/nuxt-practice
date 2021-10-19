@@ -27,12 +27,12 @@ export default {
 @import '@/assets/scss/variable';
 .breadcrumb {
     width: 100%;
-    margin-bottom: 12px;
+    margin-bottom: 24px;
     .box {
         border-top: 2px solid map-get($color, main);
         background-color: #f5f5f5;
         text-align: center;
-        padding: 8px 0;
+        padding: 12px 0;
     }
     p {
         font-size: 2.5rem;
