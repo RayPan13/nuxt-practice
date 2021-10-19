@@ -6,6 +6,7 @@
         <main>
             <layout-contact />
             <map-area />
+            <contact-form />
         </main>
         <layout-footer />
     </div>
@@ -15,9 +16,10 @@
 import breadcrumb from '@/components/Breadcrumb.vue'
 import layoutContact from '@/components/LayoutContact.vue'
 import mapArea from '@/components/MapArea.vue'
+import contactForm from '@/components/ContactForm.vue'
 export default {
     name: 'Contact',
-    components: { breadcrumb, layoutContact, mapArea },
+    components: { breadcrumb, layoutContact, mapArea, contactForm },
     computed: {
         active() {
             return this.$store.state.isNavActive
