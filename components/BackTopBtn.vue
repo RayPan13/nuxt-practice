@@ -16,7 +16,7 @@ export default {
     data() {
         return {
             scrollToOption: {
-                el: '#app',
+                el: 'body',
             },
             posittion: 500,
         }
