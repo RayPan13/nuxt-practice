@@ -2,7 +2,7 @@
     <div class="container">
         <div class="form">
             <h1>Leave A Message</h1>
-            <form action="" method="post">
+            <form action="/sent-successfully" method="post">
                 <ul>
                     <li class="name">
                         <input type="text" name="name" placeholder="Your Name" />
@@ -14,7 +14,7 @@
                         <textarea name="message" placeholder="Write your message here..."></textarea>
                     </li>
                     <li class="big">
-                        <button type="button">SEND MESSAGE</button>
+                        <button type="submit">SEND MESSAGE</button>
                     </li>
                 </ul>
             </form>
