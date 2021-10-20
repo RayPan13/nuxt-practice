@@ -33,6 +33,7 @@ export default {
     },
     mounted() {
         window.addEventListener('scroll', this.scrollhandler, true)
+        this.closeNav()
     },
     methods: {
         scrollhandler() {

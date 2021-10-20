@@ -142,7 +142,7 @@ export default {
     .open ~ ul {
         opacity: 1;
         top: 100%;
-        z-index: 0;
+        z-index: 9;
     }
     li {
         list-style: none;

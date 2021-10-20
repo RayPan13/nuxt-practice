@@ -6,20 +6,27 @@
             COLOMBO
         </div>
         <ul>
-            <li @click="closeNav">
-                <nuxt-link to="/">HOME</nuxt-link>
-            </li>
-            <li>
-                <a href="javascript:;">SHOP</a>
-            </li>
-            <li>
-                <a href="javascript:;">PAGES</a>
-            </li>
-            <li @click="closeNav">
-                <nuxt-link to="/contact" @click="closeNav">CONTACT</nuxt-link>
-            </li>
-            <li class="login">
-                <a href="javascript:;">LOG IN</a>
+            <li
+                v-for="(obj, index) of navAry"
+                :key="obj.txt"
+                @mouseenter="menuEnter(index)"
+                @mouseleave="menuLeave(index)"
+                @click="openSubMenu(index)"
+            >
+                <nuxt-link :to="obj.to">{{ obj.txt }}</nuxt-link>
+                <div v-if="obj.hasSub" class="arrow">
+                    <fa :icon="['fas', 'angle-up']" class="icon" />
+                </div>
+                <ul v-if="obj.subMenu" :class="{ active: pageSubShow }">
+                    <li v-for="subItem of obj.subMenu" :key="subItem.txt">
+                        <nuxt-link :to="subItem.to">{{ subItem.txt }}</nuxt-link>
+                    </li>
+                </ul>
+                <ul v-if="obj.subMenu" class="leftSubMenu" :class="{ open: leftSubMenuShow }">
+                    <li v-for="subItem of obj.subMenu" :key="subItem.txt">
+                        <nuxt-link :to="subItem.to">{{ subItem.txt }}</nuxt-link>
+                    </li>
+                </ul>
             </li>
         </ul>
         <div class="tips">
@@ -39,6 +46,40 @@
 <script>
 export default {
     name: 'LayoutNav',
+    data() {
+        return {
+            navAry: [
+                {
+                    txt: 'HOME',
+                    to: '/',
+                    hasSub: false,
+                },
+                {
+                    txt: 'SHOP',
+                    to: '',
+                    hasSub: true,
+                },
+                {
+                    txt: 'PAGES',
+                    to: '',
+                    hasSub: true,
+                    subMenu: [
+                        {
+                            txt: 'FAVORITES ITEM',
+                            to: '/favorites',
+                        },
+                    ],
+                },
+                {
+                    txt: 'CONTACT',
+                    to: '/contact',
+                    hasSub: false,
+                },
+            ],
+            pageSubShow: false,
+            leftSubMenuShow: false,
+        }
+    },
     computed: {
         active() {
             return this.$store.state.isNavActive
@@ -48,12 +89,28 @@ export default {
         closeNav() {
             this.$store.commit('toggleNav', false)
         },
+        menuEnter(index) {
+            if (index === 2) {
+                this.pageSubShow = true
+            }
+        },
+        menuLeave(index) {
+            if (index === 2) {
+                this.pageSubShow = false
+            }
+        },
+        openSubMenu(index) {
+            if (index === 2) {
+                this.leftSubMenuShow = !this.leftSubMenuShow
+            }
+        },
     },
 }
 </script>
 
 <style lang="scss">
 @import '@/assets/scss/variable';
+$pageSubMenuLength: 1;
 nav {
     position: relative;
     display: flex;
@@ -137,13 +194,18 @@ nav {
     }
     li {
         list-style: none;
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         font-weight: 600;
         margin-left: 12px;
+        position: relative;
+        display: flex;
+        align-items: center;
         @include media(1024) {
             text-align: left;
             margin: 0;
             border-top: 1px solid #e1e1e1;
+            justify-content: space-between;
+            flex-wrap: wrap;
         }
         &.login {
             display: none;
@@ -156,9 +218,75 @@ nav {
         &:last-child {
             margin-left: 0;
         }
+        .arrow {
+            padding-left: 12px;
+            transform: rotate(180deg);
+        }
         a {
             padding: 12px;
             display: block;
+            &:hover {
+                color: map-get($color, main);
+                & ~ .arrow {
+                    color: map-get($color, main);
+                }
+            }
+        }
+        ul {
+            position: absolute;
+            top: 130%;
+            left: 12px;
+            margin: 0;
+            padding: 12px;
+            background-color: #fff;
+            border-top: 2px solid map-get($color, main);
+            width: 150%;
+            flex-wrap: wrap;
+            transition: opacity 0.5s, top 0.5s;
+            opacity: 0;
+            z-index: -9;
+            @include media(1024) {
+                display: none;
+            }
+            &.active {
+                opacity: 1;
+                top: 100%;
+                z-index: 9;
+            }
+            &.leftSubMenu {
+                display: none;
+                @include media(1024) {
+                    display: block;
+                    opacity: 1;
+                    position: relative;
+                    top: 0;
+                    left: 0;
+                    background: transparent;
+                    border-top: 0;
+                    padding: 0 20px;
+                    z-index: 1;
+                    height: 0;
+                    overflow: hidden;
+                    transition: height 0.5s;
+                    &.open {
+                        height: calc(50 * $pageSubMenuLength) + px;
+                    }
+                }
+            }
+            li {
+                flex-basis: 100%;
+                list-style: none;
+                margin: 0 0 12px;
+                @include media(1024) {
+                    margin: 0;
+                    padding: 12px 0;
+                }
+                a {
+                    width: 100%;
+                    padding: 4px 0;
+                    font-size: 1.4rem;
+                }
+            }
         }
     }
     .tips {
