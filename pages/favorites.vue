@@ -1,11 +1,30 @@
 <template>
     <div id="favorites">
-        <h1>favorites</h1>
+        <layout-header />
+        <breadcrumb page="favorites" />
+        <main>
+            <div class="container">
+                <h1>favorites</h1>
+            </div>
+        </main>
+        <back-top-btn :scroll-top="scrollTop" />
+        <layout-footer />
     </div>
 </template>
 
 <script>
+import layoutHeader from '@/components/LayoutHeader.vue'
+import breadcrumb from '@/components/Breadcrumb.vue'
+import backTopBtn from '@/components/BackTopBtn.vue'
+import layoutFooter from '@/components/LayoutFooter.vue'
+
 export default {
+    components: { layoutHeader, breadcrumb, backTopBtn, layoutFooter },
+    data() {
+        return {
+            scrollTop: 0,
+        }
+    },
     mounted() {
         window.addEventListener('scroll', this.scrollhandler, true)
         this.closeNav()

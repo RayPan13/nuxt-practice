@@ -2,7 +2,7 @@
     <div id="contact">
         <div class="cover" :class="{ active }" @click="closeNav"></div>
         <layout-header />
-        <breadcrumb />
+        <breadcrumb page="contact" />
         <main>
             <layout-contact />
             <map-area />

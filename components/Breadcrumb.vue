@@ -3,14 +3,17 @@
         <div class="container">
             <div class="box">
                 <p>
-                    <fa :icon="['fas', 'mobile-alt']"></fa>
-                    Contact
+                    <fa v-if="nowInfo.icon === 'contact'" :icon="['fas', 'mobile-alt']"></fa>
+                    <fa v-if="nowInfo.icon === 'favorites'" :icon="['fas', 'heart']"></fa>
+                    {{ nowInfo.txt }}
                 </p>
                 <ul>
-                    <li>
-                        <fa :icon="['fas', 'home']"></fa>
+                    <li v-for="obj of nowInfo.path" :key="obj.txt">
+                        <nuxt-link :to="obj.to">
+                            <fa v-if="obj.icon === 'home'" :icon="['fas', 'home']"></fa>
+                            <span v-else>{{ obj.txt }}</span>
+                        </nuxt-link>
                     </li>
-                    <li>Contact</li>
                 </ul>
             </div>
         </div>
@@ -20,6 +23,55 @@
 <script>
 export default {
     name: 'Breadcrumb',
+    props: {
+        page: {
+            type: String,
+            required: true,
+        },
+    },
+    data() {
+        return {
+            pages: {
+                contact: {
+                    icon: 'contact',
+                    txt: 'contact',
+                    path: [
+                        {
+                            to: '/',
+                            icon: 'home',
+                            txt: 'home',
+                        },
+                        {
+                            to: '/contact',
+                            icon: 'contact',
+                            txt: 'contact',
+                        },
+                    ],
+                },
+                favorites: {
+                    icon: 'favorites',
+                    txt: 'favorites',
+                    path: [
+                        {
+                            to: '/',
+                            icon: 'home',
+                            txt: 'home',
+                        },
+                        {
+                            to: '/favorites',
+                            icon: 'favorites',
+                            txt: 'favorites',
+                        },
+                    ],
+                },
+            },
+        }
+    },
+    computed: {
+        nowInfo() {
+            return this.pages[this.page]
+        },
+    },
 }
 </script>
 
@@ -38,6 +90,7 @@ export default {
         font-size: 2.5rem;
         font-weight: 600;
         margin: 0 0 8px;
+        text-transform: capitalize;
         svg {
             padding-right: 4px;
             color: map-get($color, main);
@@ -56,6 +109,7 @@ export default {
         list-style: none;
         margin-right: 0.5em;
         cursor: pointer;
+        text-transform: capitalize;
         &:hover {
             color: map-get($color, main);
         }
