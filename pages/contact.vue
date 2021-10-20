@@ -18,7 +18,6 @@ import layoutContact from '@/components/LayoutContact.vue'
 import mapArea from '@/components/MapArea.vue'
 import contactForm from '@/components/ContactForm.vue'
 export default {
-    name: 'Contact',
     components: { breadcrumb, layoutContact, mapArea, contactForm },
     computed: {
         active() {
