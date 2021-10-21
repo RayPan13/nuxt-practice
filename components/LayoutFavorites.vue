@@ -3,17 +3,17 @@
         <div class="control">
             <div class="options">
                 <input id="selectAll" type="checkbox" />
-                <span class="checkbox"></span>
+                <span></span>
                 <label for="selectAll">Select All</label>
                 <button type="button">DELETE</button>
             </div>
         </div>
-        <ul>
+        <ul class="list">
             <li>
                 <div class="item">
                     <div class="info">
                         <div class="checkbox">
-                            <input type="checkbox" />
+                            <span></span>
                         </div>
                         <div class="pic">
                             <img src="https://picsum.photos/140/140?random=201" alt="" />
@@ -24,13 +24,13 @@
                             <h3>Chocolate</h3>
                             <p class="price">10.00</p>
                             <p class="discount">
-                                <fa :icon="['fas', 'fa-truck']"></fa>
+                                <fa :icon="['fas', 'truck']"></fa>
                                 <span>Free shipping</span>
                             </p>
                         </div>
                         <div class="list-control">
                             <button type="button" class="add">ADD TO CART</button>
-                            <button type="button" class="checkout">ABUY NOW</button>
+                            <button type="button" class="checkout">BUY NOW</button>
                             <button type="button" class="delete">
                                 <fa :icon="['far', 'trash-alt']"></fa>
                             </button>
@@ -179,6 +179,144 @@ export default {
         }
         .next {
             right: 0;
+        }
+    }
+    .list {
+        margin: 0;
+        padding: 0;
+        li {
+            list-style: none;
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #aaa;
+        }
+        .item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .info {
+            display: flex;
+            align-items: center;
+            .checkbox {
+                margin: 0 24px;
+                span {
+                    width: 20px;
+                    height: 20px;
+                    border: 1px solid #666;
+                    border-radius: 4px;
+                    display: inline-block;
+                    margin-right: 8px;
+                    position: relative;
+                    cursor: pointer;
+                    &.active {
+                        background-color: map-get($color, main);
+                        border-color: map-get($color, main);
+                        &::after {
+                            content: '';
+                            display: block;
+                            width: 60%;
+                            height: 3px;
+                            background-color: #fff;
+                            position: absolute;
+                            top: 8px;
+                            left: 7px;
+                            transform: rotate(-45deg);
+                        }
+                        &::before {
+                            content: '';
+                            display: block;
+                            width: 40%;
+                            height: 3px;
+                            background-color: #fff;
+                            position: absolute;
+                            top: 9px;
+                            left: 3px;
+                            transform: rotate(45deg);
+                        }
+                    }
+                }
+            }
+            .pic {
+                padding-right: 12px;
+                @include media(640) {
+                    display: none;
+                }
+            }
+        }
+        .box {
+            flex-basis: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            @include media(1024) {
+                flex-wrap: wrap;
+                justify-content: flex-end;
+            }
+            .text {
+                @include media(1024) {
+                    flex-basis: 90%;
+                    margin-bottom: 12px;
+                }
+                @include media(640) {
+                    flex-basis: 100%;
+                }
+            }
+            .list-control {
+                display: flex;
+                @include media(1024) {
+                    flex-basis: 90%;
+                }
+                @include media(640) {
+                    flex-basis: 100%;
+                }
+            }
+            h3 {
+                font-size: 1.8rem;
+                margin: 0 0 8px;
+            }
+            p {
+                margin: 0 0 8px;
+                font-size: 1.4rem;
+            }
+            .price {
+                color: map-get($color, main);
+                font-weight: 600;
+                &::before {
+                    content: '$';
+                    display: inline-block;
+                    padding-right: 2px;
+                }
+            }
+            .discount {
+                color: map-get($color, aid);
+                font-weight: 500;
+            }
+            button {
+                border: 0;
+                background: transparent;
+                cursor: pointer;
+                padding: 8px;
+                margin-right: 12px;
+                font-weight: 900;
+                border-radius: 4px;
+                &:last-child {
+                    margin-right: 0;
+                    padding: 0;
+                }
+            }
+            .add {
+                border: 1px solid map-get($color, main);
+                color: map-get($color, main);
+            }
+            .checkout {
+                background-color: map-get($color, main);
+                color: #fff;
+            }
+            .delete {
+                color: map-get($color, main);
+                font-size: 1.8rem;
+            }
         }
     }
 }
