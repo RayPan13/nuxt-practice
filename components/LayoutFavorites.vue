@@ -2,30 +2,29 @@
     <div class="favorites-list">
         <div class="control">
             <div class="options">
-                <input id="selectAll" type="checkbox" />
-                <span></span>
-                <label for="selectAll">Select All</label>
+                <span :class="{ active: selectedAll }"></span>
+                <label @click="toggleAll">Select All</label>
                 <button type="button">DELETE</button>
             </div>
         </div>
         <ul class="list">
-            <li>
+            <li v-for="(obj, index) of list" :key="obj.id">
                 <div class="item">
                     <div class="info">
-                        <div class="checkbox">
+                        <div class="checkbox" :class="{ active: obj.selected }" @click="toggleSelected(index)">
                             <span></span>
                         </div>
                         <div class="pic">
-                            <img src="https://picsum.photos/140/140?random=201" alt="" />
+                            <img :src="obj.src" alt="" />
                         </div>
                     </div>
                     <div class="box">
                         <div class="text">
-                            <h3>Chocolate</h3>
-                            <p class="price">10.00</p>
+                            <h3>{{ obj.name }}</h3>
+                            <p class="price">{{ obj.price }}</p>
                             <p class="discount">
-                                <fa :icon="['fas', 'truck']"></fa>
-                                <span>Free shipping</span>
+                                <fa v-if="obj.discount.icon === 'shipping'" :icon="['fas', 'truck']"></fa>
+                                <span>{{ obj.discount.text }}</span>
                             </p>
                         </div>
                         <div class="list-control">
@@ -58,6 +57,54 @@
 <script>
 export default {
     name: 'LayoutFavorites',
+    data() {
+        return {
+            list: [
+                {
+                    id: 1,
+                    src: 'https://picsum.photos/140/140?random=201',
+                    name: 'Chocolate',
+                    price: '10.00',
+                    discount: { icon: 'shipping', text: 'Freeshipping' },
+                    selected: false,
+                },
+                {
+                    id: 2,
+                    src: 'https://picsum.photos/140/140?random=202',
+                    name: 'Chocolate',
+                    price: '11.00',
+                    discount: { icon: 'discount', text: 'Discount 10%' },
+                    selected: false,
+                },
+                {
+                    id: 3,
+                    src: 'https://picsum.photos/140/140?random=203',
+                    name: 'Chocolate',
+                    price: '12.00',
+                    discount: { icon: 'shipping', text: 'Freeshipping' },
+                    selected: false,
+                },
+            ],
+            selectedAll: false,
+        }
+    },
+    methods: {
+        toggleSelected(index) {
+            this.list[index].selected = !this.list[index].selected
+            this.checkSelectedAll()
+        },
+        toggleAll() {
+            this.selectedAll = !this.selectedAll
+            this.list.forEach((obj) => {
+                obj.selected = this.selectedAll
+            })
+        },
+        checkSelectedAll() {
+            this.selectedAll = this.list.every((obj) => {
+                return obj.selected
+            })
+        },
+    },
 }
 </script>
 <style lang="scss" scoped>
@@ -77,9 +124,16 @@ export default {
             font-size: 1.6rem;
             display: flex;
             align-items: center;
-            [type='checkbox'] {
-                display: none;
-                &:checked + span {
+            span {
+                width: 20px;
+                height: 20px;
+                border: 1px solid #666;
+                border-radius: 4px;
+                display: inline-block;
+                margin-right: 8px;
+                position: absolute;
+                z-index: -1;
+                &.active {
                     background-color: map-get($color, main);
                     border-color: map-get($color, main);
                     &::after {
@@ -106,20 +160,12 @@ export default {
                     }
                 }
             }
-            span {
-                width: 20px;
-                height: 20px;
-                border: 1px solid #666;
-                border-radius: 4px;
-                display: inline-block;
-                margin-right: 8px;
-                position: relative;
-            }
             label {
                 color: #666;
                 margin-right: 48px;
                 user-select: none;
                 cursor: pointer;
+                padding-left: 28px;
             }
             button {
                 border: 0;
@@ -209,31 +255,31 @@ export default {
                     margin-right: 8px;
                     position: relative;
                     cursor: pointer;
-                    &.active {
-                        background-color: map-get($color, main);
-                        border-color: map-get($color, main);
-                        &::after {
-                            content: '';
-                            display: block;
-                            width: 60%;
-                            height: 3px;
-                            background-color: #fff;
-                            position: absolute;
-                            top: 8px;
-                            left: 7px;
-                            transform: rotate(-45deg);
-                        }
-                        &::before {
-                            content: '';
-                            display: block;
-                            width: 40%;
-                            height: 3px;
-                            background-color: #fff;
-                            position: absolute;
-                            top: 9px;
-                            left: 3px;
-                            transform: rotate(45deg);
-                        }
+                }
+                &.active > span {
+                    background-color: map-get($color, main);
+                    border-color: map-get($color, main);
+                    &::after {
+                        content: '';
+                        display: block;
+                        width: 60%;
+                        height: 3px;
+                        background-color: #fff;
+                        position: absolute;
+                        top: 8px;
+                        left: 7px;
+                        transform: rotate(-45deg);
+                    }
+                    &::before {
+                        content: '';
+                        display: block;
+                        width: 40%;
+                        height: 3px;
+                        background-color: #fff;
+                        position: absolute;
+                        top: 9px;
+                        left: 3px;
+                        transform: rotate(45deg);
                     }
                 }
             }
