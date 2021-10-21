@@ -57,7 +57,7 @@ export default {
                 {
                     txt: 'SHOP',
                     to: '',
-                    hasSub: true,
+                    hasSub: false,
                 },
                 {
                     txt: 'PAGES',
