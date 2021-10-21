@@ -3,9 +3,9 @@
         <div class="container">
             <div class="box">
                 <p>
-                    <fa v-if="nowInfo.icon === 'contact'" :icon="['fas', 'mobile-alt']"></fa>
-                    <fa v-if="nowInfo.icon === 'favorites'" :icon="['fas', 'heart']"></fa>
-                    {{ nowInfo.txt }}
+                    <fa v-if="page === 'contact'" :icon="['fas', 'mobile-alt']"></fa>
+                    <fa v-if="page === 'favorites'" :icon="['fas', 'heart']"></fa>
+                    {{ page }}
                 </p>
                 <ul>
                     <li v-for="obj of nowInfo.path" :key="obj.txt">
@@ -33,8 +33,6 @@ export default {
         return {
             pages: {
                 contact: {
-                    icon: 'contact',
-                    txt: 'contact',
                     path: [
                         {
                             to: '/',
@@ -49,8 +47,6 @@ export default {
                     ],
                 },
                 favorites: {
-                    icon: 'favorites',
-                    txt: 'favorites',
                     path: [
                         {
                             to: '/',
