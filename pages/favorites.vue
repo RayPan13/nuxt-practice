@@ -1,18 +1,18 @@
 <template>
     <div id="favorites">
-        <breadcrumb page="favorites" />
+        <Breadcrumb page="favorites" />
         <main>
-            <layout-favorites />
+            <TheFavorites />
         </main>
     </div>
 </template>
 
 <script>
-import breadcrumb from '@/components/Breadcrumb.vue'
-import layoutFavorites from '@/components/LayoutFavorites.vue'
+import Breadcrumb from '@/components/Breadcrumb.vue'
+import TheFavorites from '@/components/TheFavorites.vue'
 
 export default {
-    components: { breadcrumb, layoutFavorites },
+    components: { Breadcrumb, TheFavorites },
     head: {
         title: 'favorites',
         meta: [

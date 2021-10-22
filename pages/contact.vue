@@ -1,21 +1,21 @@
 <template>
     <div id="contact">
-        <breadcrumb page="contact" />
+        <Breadcrumb page="contact" />
         <main>
-            <layout-contact />
-            <map-area />
-            <contact-form />
+            <TheContact />
+            <MapArea />
+            <ContactForm />
         </main>
     </div>
 </template>
 
 <script>
-import breadcrumb from '@/components/Breadcrumb.vue'
-import layoutContact from '@/components/LayoutContact.vue'
-import mapArea from '@/components/MapArea.vue'
-import contactForm from '@/components/ContactForm.vue'
+import Breadcrumb from '@/components/Breadcrumb.vue'
+import TheContact from '@/components/TheContact.vue'
+import MapArea from '@/components/MapArea.vue'
+import ContactForm from '@/components/ContactForm.vue'
 export default {
-    components: { breadcrumb, layoutContact, mapArea, contactForm },
+    components: { Breadcrumb, TheContact, MapArea, ContactForm },
     head: {
         title: 'contact',
         meta: [

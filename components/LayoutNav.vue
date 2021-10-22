@@ -66,7 +66,7 @@ export default {
                     subMenu: [
                         {
                             txt: 'PRODUCT DETAILS',
-                            to: '/product-details',
+                            to: '/details',
                         },
                         {
                             txt: 'FAVORITES ITEM',

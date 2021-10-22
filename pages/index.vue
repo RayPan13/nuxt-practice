@@ -1,25 +1,25 @@
 <template>
     <div id="app">
         <main>
-            <layout-kv />
-            <layout-product />
-            <layout-featured />
-            <layout-info />
+            <TheKv />
+            <TheProduct />
+            <TheFeatured />
+            <TheInfo />
         </main>
     </div>
 </template>
 
 <script>
-import layoutKv from '@/components/LayoutKv.vue'
-import layoutProduct from '@/components/LayoutProduct.vue'
-import layoutFeatured from '@/components/LayoutFeatured.vue'
-import layoutInfo from '@/components/LayoutInfo.vue'
+import TheKv from '@/components/TheKv.vue'
+import TheProduct from '@/components/TheProduct.vue'
+import TheFeatured from '@/components/TheFeatured.vue'
+import TheInfo from '@/components/TheInfo.vue'
 export default {
     components: {
-        layoutKv,
-        layoutProduct,
-        layoutFeatured,
-        layoutInfo,
+        TheKv,
+        TheProduct,
+        TheFeatured,
+        TheInfo,
     },
     head: {
         title: 'index',
