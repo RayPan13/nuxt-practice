@@ -1,55 +1,57 @@
 <template>
-    <div class="favorites-list">
-        <div class="control">
-            <div class="options">
-                <span :class="{ active: selectedAll }"></span>
-                <label @click="toggleAll">Select All</label>
-                <button type="button">DELETE</button>
-            </div>
-        </div>
-        <ul class="list">
-            <li v-for="(obj, index) of list" :key="obj.id">
-                <div class="item">
-                    <div class="info">
-                        <div class="checkbox" :class="{ active: obj.selected }" @click="toggleSelected(index)">
-                            <span></span>
-                        </div>
-                        <div class="pic">
-                            <img :src="obj.src" alt="" />
-                        </div>
-                    </div>
-                    <div class="box">
-                        <div class="text">
-                            <h3>{{ obj.name }}</h3>
-                            <p class="price">{{ obj.price }}</p>
-                            <p class="discount">
-                                <fa v-if="obj.discount.icon === 'shipping'" :icon="['fas', 'truck']"></fa>
-                                <span>{{ obj.discount.text }}</span>
-                            </p>
-                        </div>
-                        <div class="list-control">
-                            <button type="button" class="add">ADD TO CART</button>
-                            <button type="button" class="checkout">BUY NOW</button>
-                            <button type="button" class="delete">
-                                <fa :icon="['far', 'trash-alt']"></fa>
-                            </button>
-                        </div>
-                    </div>
+    <div class="container">
+        <div class="favorites-list">
+            <div class="control">
+                <div class="options">
+                    <span :class="{ active: selectedAll }"></span>
+                    <label @click="toggleAll">Select All</label>
+                    <button type="button">DELETE</button>
                 </div>
-            </li>
-        </ul>
-        <div class="pages">
-            <div class="prev">
-                <fa :icon="['fas', 'angle-left']"></fa>
             </div>
-            <div class="next">
-                <fa :icon="['fas', 'angle-right']"></fa>
-            </div>
-            <ul>
-                <li class="active">1</li>
-                <li>2</li>
-                <li>3</li>
+            <ul class="list">
+                <li v-for="(obj, index) of list" :key="obj.id">
+                    <div class="item">
+                        <div class="info">
+                            <div class="checkbox" :class="{ active: obj.selected }" @click="toggleSelected(index)">
+                                <span></span>
+                            </div>
+                            <div class="pic">
+                                <img :src="obj.src" alt="" />
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="text">
+                                <h3>{{ obj.name }}</h3>
+                                <p class="price">{{ obj.price }}</p>
+                                <p class="discount">
+                                    <fa v-if="obj.discount.icon === 'shipping'" :icon="['fas', 'truck']"></fa>
+                                    <span>{{ obj.discount.text }}</span>
+                                </p>
+                            </div>
+                            <div class="list-control">
+                                <button type="button" class="add">ADD TO CART</button>
+                                <button type="button" class="checkout">BUY NOW</button>
+                                <button type="button" class="delete">
+                                    <fa :icon="['far', 'trash-alt']"></fa>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
             </ul>
+            <div class="pages">
+                <div class="prev">
+                    <fa :icon="['fas', 'angle-left']"></fa>
+                </div>
+                <div class="next">
+                    <fa :icon="['fas', 'angle-right']"></fa>
+                </div>
+                <ul>
+                    <li class="active">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </div>
         </div>
     </div>
 </template>

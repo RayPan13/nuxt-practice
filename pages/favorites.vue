@@ -3,9 +3,7 @@
         <layout-header />
         <breadcrumb page="favorites" />
         <main>
-            <div class="container">
-                <layout-favorites />
-            </div>
+            <layout-favorites />
         </main>
         <back-top-btn :scroll-top="scrollTop" />
         <layout-footer />
