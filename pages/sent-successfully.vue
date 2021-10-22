@@ -1,6 +1,5 @@
 <template>
     <div id="sentSuccessfully">
-        <layout-header />
         <main>
             <div class="container">
                 <h1>Message sent succesfully</h1>
@@ -14,15 +13,14 @@
                 </button>
             </div>
         </main>
-        <layout-footer />
     </div>
 </template>
 
 <script>
-import layoutHeader from '@/components/LayoutHeader.vue'
-import layoutFooter from '@/components/LayoutFooter.vue'
 export default {
-    components: { layoutHeader, layoutFooter },
+    mounted() {
+        this.$store.commit('toggleNav', false)
+    },
 }
 </script>
 

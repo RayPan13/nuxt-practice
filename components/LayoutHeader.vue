@@ -41,7 +41,7 @@
         <div class="header">
             <div class="container">
                 <div class="logo">
-                    <a href="javascript:;"></a>
+                    <a href="/"></a>
                     <fa :icon="['fas', 'ice-cream']" />
                     COLOMBO
                 </div>
