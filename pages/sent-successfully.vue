@@ -18,6 +18,13 @@
 
 <script>
 export default {
+    head: {
+        title: 'sent successfully',
+        meta: [
+            { hid: 'title', name: 'title', content: 'sent successfully' },
+            { hid: 'description', name: 'description', content: 'This is sent successfully page' },
+        ],
+    },
     mounted() {
         this.$store.commit('toggleNav', false)
     },

@@ -3,22 +3,25 @@ export default {
     target: 'static',
     // Global page headers: https://go.nuxtjs.dev/config-head
     head: {
-        title: 'nuxt-practice',
         htmlAttrs: {
             lang: 'en',
         },
+        title: 'nuxt-practice',
         meta: [
             { charset: 'utf-8' },
             {
                 'http-equiv': 'X-UA-Compatible',
-                content: 'IE=edge',
+                content: 'IE=edge,chrome=1',
             },
             {
                 name: 'viewport',
                 content: 'width=device-width, initial-scale=1',
             },
-            { hid: 'description', name: 'description', content: '' },
             { name: 'format-detection', content: 'telephone=no' },
+            { hid: 'title', name: 'title', content: 'nuxt-practice' },
+            { hid: 'description', name: 'description', content: '共用的描述' },
+            { hid: 'keywords', name: 'keywords', content: 'html,css,js,vue,nuxt' },
+            { hid: 'author', name: 'author', content: 'RayPan' },
         ],
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },

@@ -21,6 +21,13 @@ export default {
         layoutFeatured,
         layoutInfo,
     },
+    head: {
+        title: 'index',
+        meta: [
+            { hid: 'title', name: 'title', content: 'index' },
+            { hid: 'description', name: 'description', content: 'This is index page' },
+        ],
+    },
     mounted() {
         this.$store.commit('toggleNav', false)
     },
