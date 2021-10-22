@@ -65,6 +65,10 @@ export default {
                     hasSub: true,
                     subMenu: [
                         {
+                            txt: 'PRODUCT DETAILS',
+                            to: '/product-details',
+                        },
+                        {
                             txt: 'FAVORITES ITEM',
                             to: '/favorites',
                         },
@@ -110,7 +114,7 @@ export default {
 
 <style lang="scss">
 @import '@/assets/scss/variable';
-$pageSubMenuLength: 1;
+$pageSubMenuLength: 2;
 nav {
     position: relative;
     display: flex;
