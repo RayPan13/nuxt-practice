@@ -75,6 +75,8 @@ export default {
 .product-details {
     width: 100%;
     display: flex;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 12px;
     margin-bottom: 24px;
     @include media(1024) {
         flex-wrap: wrap;

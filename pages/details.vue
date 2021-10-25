@@ -2,15 +2,18 @@
     <div id="details">
         <main>
             <TheProductDetails />
+            <TheDescription />
         </main>
     </div>
 </template>
 
 <script>
 import TheProductDetails from '@/components/TheProductDetails'
+import TheDescription from '@/components/TheDescription'
 export default {
     components: {
         TheProductDetails,
+        TheDescription,
     },
     head: {
         title: 'details',
