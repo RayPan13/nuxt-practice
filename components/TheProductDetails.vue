@@ -1,7 +1,9 @@
 <template>
     <div class="container">
         <div class="product-details">
-            <div class="images"></div>
+            <div class="images">
+                <CarouselThumbnail :carousel="carousel" />
+            </div>
             <div class="text">
                 <div class="tips">IN STOCK</div>
                 <h1>Chocolate</h1>
@@ -66,8 +68,21 @@
     </div>
 </template>
 <script>
+import CarouselThumbnail from '@/components/CarouselThumbnail'
 export default {
     name: 'TheProductDetails',
+    components: {
+        CarouselThumbnail,
+    },
+    data() {
+        return {
+            carousel: [
+                { id: 1, src: 'https://picsum.photos/568/400?random=901' },
+                { id: 2, src: 'https://picsum.photos/568/400?random=902' },
+                { id: 3, src: 'https://picsum.photos/568/400?random=903' },
+            ],
+        }
+    },
 }
 </script>
 <style lang="scss" scoped>
