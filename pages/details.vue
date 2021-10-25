@@ -3,6 +3,7 @@
         <main>
             <TheProductDetails />
             <TheDescription />
+            <TheRelated />
         </main>
     </div>
 </template>
@@ -10,10 +11,12 @@
 <script>
 import TheProductDetails from '@/components/TheProductDetails'
 import TheDescription from '@/components/TheDescription'
+import TheRelated from '@/components/TheRelated'
 export default {
     components: {
         TheProductDetails,
         TheDescription,
+        TheRelated,
     },
     head: {
         title: 'details',
