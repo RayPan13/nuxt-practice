@@ -15,7 +15,12 @@
             <fa :icon="['fas', 'angle-right']" />
         </button>
         <ul>
-            <li v-for="(obj, index) of carousel" :key="obj.id" :class="{ active: show === index }">
+            <li
+                v-for="(obj, index) of carousel"
+                :key="obj.id"
+                :class="{ active: show === index }"
+                @click="setShow(index)"
+            >
                 <img :src="obj.src" alt="" />
             </li>
         </ul>
