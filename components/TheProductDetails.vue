@@ -15,11 +15,11 @@
                 </p>
                 <div class="control">
                     <div class="number">
-                        <input type="number" placeholder="0" />
-                        <button type="button" class="up">
+                        <input v-model="nowNumber" type="number" placeholder="0" />
+                        <button type="button" class="up" @click="changeNumber(1)">
                             <fa :icon="['fas', 'angle-up']" />
                         </button>
-                        <button type="button" class="down">
+                        <button type="button" class="down" @click="changeNumber(-1)">
                             <fa :icon="['fas', 'angle-down']" />
                         </button>
                     </div>
@@ -81,7 +81,20 @@ export default {
                 { id: 2, src: 'https://picsum.photos/568/400?random=902' },
                 { id: 3, src: 'https://picsum.photos/568/400?random=903' },
             ],
+            nowNumber: 0,
         }
+    },
+    watch: {
+        nowNumber(nVal) {
+            if (nVal < 0) {
+                this.nowNumber = 0
+            }
+        },
+    },
+    methods: {
+        changeNumber(count) {
+            this.nowNumber = this.nowNumber + count
+        },
     },
 }
 </script>

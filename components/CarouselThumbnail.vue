@@ -1,10 +1,10 @@
 <template>
     <div class="carousel">
+        <div class="heart">
+            <fa :icon="['far', 'heart']" />
+        </div>
         <transition-group tag="div" :name="transitionName">
             <div v-for="(obj, index) of carousel" v-show="index === show" :key="obj.id" class="item">
-                <div class="heart">
-                    <fa :icon="['far', 'heart']" />
-                </div>
                 <img :src="obj.src" alt="" />
             </div>
         </transition-group>
@@ -85,6 +85,33 @@ export default {
             }
         }
     }
+    .heart {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        border-radius: 50%;
+        background-color: #fff;
+        box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);
+        z-index: 3;
+        width: 30px;
+        height: 30px;
+        color: map-get($color, main);
+        font-size: 1.8rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        svg {
+            transition: 0.5s;
+        }
+        &:hover {
+            background-color: map-get($color, main);
+            color: #fff;
+            svg {
+                transform: rotate(360deg);
+            }
+        }
+    }
     button {
         position: absolute;
         top: 50%;
@@ -135,34 +162,6 @@ export default {
         left: 0;
         img {
             width: 100%;
-        }
-
-        .heart {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            border-radius: 50%;
-            background-color: #fff;
-            box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);
-            z-index: 3;
-            width: 30px;
-            height: 30px;
-            color: map-get($color, main);
-            font-size: 1.8rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            svg {
-                transition: 0.5s;
-            }
-            &:hover {
-                background-color: map-get($color, main);
-                color: #fff;
-                svg {
-                    transform: rotate(360deg);
-                }
-            }
         }
     }
     ul {
