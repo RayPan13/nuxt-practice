@@ -91,7 +91,7 @@ export default {
     },
     methods: {
         closeNav() {
-            this.$store.commit('toggleNav', false)
+            this.$store.dispatch('updateNavActive', false)
         },
         menuEnter(index) {
             if (index === 2) {

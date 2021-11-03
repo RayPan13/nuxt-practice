@@ -26,7 +26,7 @@ export default {
         ],
     },
     mounted() {
-        this.$store.commit('toggleNav', false)
+        this.$store.dispatch('updateNavActive', false)
     },
 }
 </script>

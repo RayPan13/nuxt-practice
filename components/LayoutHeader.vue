@@ -67,7 +67,7 @@ export default {
     },
     methods: {
         openNav() {
-            this.$store.commit('toggleNav', true)
+            this.$store.dispatch('updateNavActive', true)
         },
     },
 }

@@ -5,7 +5,9 @@ const state = () => {
 }
 
 const actions = {
-    // ...
+    updateNavActive(context, status) {
+        context.commit('toggleNav', status)
+    },
 }
 
 const mutations = {
@@ -14,9 +16,7 @@ const mutations = {
     },
 }
 
-const getters = {
-    // ...
-}
+const getters = {}
 
 export default {
     state,
